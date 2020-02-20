@@ -106,7 +106,7 @@ router.put("/:id", validateSchemeId, (req, res) => {
       if (scheme) {
         Schemes.update(changes, id).then(scheme => {
           return Schemes.findById(id).then(inserted => {
-            res.status(201).json(inserted);
+            res.status(200).json(inserted);
           });
         });
       } else {
@@ -124,11 +124,15 @@ router.put("/:id", validateSchemeId, (req, res) => {
 // Schemes.remove(id)
 router.delete("/:id", validateSchemeId, (req, res) => {
   const { id } = req.params;
-
+  console.log("This is req.body: ", req.body)
   Schemes.remove(id)
     .then(deleted => {
       if (deleted) {
-        res.json({ removed: deleted });
+        // return Schemes.findById(id).then(deleted => {
+          res.status(200).json(req.scheme);
+        // });
+
+        // res.json({ removed: deleted });
       } else {
         res
           .status(404)
