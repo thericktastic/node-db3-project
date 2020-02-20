@@ -31,9 +31,9 @@ SELECT *,
 
 -- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
 
-SELECT [Order].id,
-       Customer.CompanyName,
-       Employee.LastName
+SELECT [Order].id as 'Order Id',
+       Customer.CompanyName as 'Customer Company Name',
+       Employee.LastName as 'Employee Last Name'
   FROM [Order]
        JOIN
        Customer ON [Order].CustomerId = Customer.Id
